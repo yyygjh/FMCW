@@ -1,0 +1,11 @@
+项目名称：基于RAG+AI Agent的边坡监测一体化系统
+项目功能：
+1. 通过ESP8266 AP模式让电脑连接单片机，获取边坡距离、北斗经纬度、时间数据
+2. 使用YOLOv8实现监测区域内人、猫、狗入侵检测
+3. 实时显示边坡距离变化曲线图
+4. 入侵或距离异常自动发送微信和邮件告警
+5. 内置RAG知识库问答，可查询项目技术、故障、原理
+6. 可打包为EXE独立运行
+
+技术栈：
+Python、Tkinter、YOLOv8、TCP Socket、Matplotlib、LangChain、FAISS、RAG、Ollama
