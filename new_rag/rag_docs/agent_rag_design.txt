@@ -1,0 +1,14 @@
+【Agent 与 RAG 设计思路】
+
+当前系统已实现：
+- 基于关键词匹配的问答（SimpleRAG），知识库为 txt 文档
+- 已部署 Ollama + Qwen2.5-0.5B 本地模型，可通过 API 调用
+
+下一步升级方向：
+1. 向量检索 RAG：采用 FAISS + sentence-transformers(all-MiniLM-L6-v2)，将知识库文档切块（chunk_size=200, overlap=20）后向量化，用户问句先语义检索再 LLM 生成。
+2. ReAct Agent：使用 LangChain 的 initialize_agent，定义两个工具：GetWeather（模拟天气查询）、SearchHistory（检索历史滑坡案例）。Agent 自主决定调用哪个工具。
+3. 上下文记忆：短期滑动窗口保留最近 5 轮对话，长期记忆存储重要事件摘要，避免 token 爆炸。
+
+技术难点：
+- 如何保证本地模型在低资源设备上实时响应？——量化模型 + 流式输出
+- 如何避免工具调用错误？——系统提示词约束 + 工具描述清晰
