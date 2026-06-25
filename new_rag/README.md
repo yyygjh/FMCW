@@ -7,7 +7,6 @@
 核心理念：硬数据 100% 由工具返回，杜绝模型编造；Agent 从被动问答进化为主动预警、自学习、自进化的值班哨兵。
 
 🏗️ 系统架构
-text
 ┌─────────────────────────────────────────────────────────────┐
 │  📡 感知层（硬件通信）                                    │
 │  - WiFi TCP：ESP8266 距离传感器 + 北斗 GPS 轮询          │
@@ -36,6 +35,7 @@ text
 │  - rag_docs/：知识库文档（txt）                           │
 └─────────────────────────────────────────────────────────────┘
 8 级拦截器流水线
+
 优先级	拦截器	触发条件	目的
 1	复合拆分	含多个标点/意图	并行处理多问题
 2	事实提取	“我叫/我是”	记住用户偏好
@@ -47,16 +47,16 @@ text
 8	回退 LLM	全部未命中	通用兜底
 ⚙️ 技术栈
 分类	            技术	                  用途
-语言	Python 3.13	                       主开发语言
-AI 框架	LangChain, LangGraph	       Agent 编排、工具调用
-本地模型	Ollama + Qwen2.5-3B	            对话推理
-嵌入模型	Ollama + qwen3-embedding:4b	    文本向量化
-向量数据库	FAISS（CPU）	                相似度检索
-文本处理	RecursiveCharacterTextSplitter	文档分块
-目标检测	YOLOv8（yolov8n.pt）	        入侵检测
-硬件通信	socket（TCP）, pyserial	ESP8266 + GPS
-告警	smtplib, itchat	                   邮件 + 微信
-GUI	Tkinter + Matplotlib	                监控面板
+语言	        Python 3.13	              主开发语言
+AI 框架	    LangChain, LangGraph	   Agent 编排、工具调用
+本地模型	    Ollama + Qwen2.5-3B	         对话推理
+嵌入模型	   Ollama + qwen3-embedding:4b	 文本向量化
+向量数据库	     FAISS（CPU）	            相似度检索
+文本处理  RecursiveCharacterTextSplitter	 文档分块
+目标检测   	YOLOv8（yolov8n.pt）	        入侵检测
+硬件通信	    socket（TCP）,pyserial	    ESP8266 + GPS
+告警	        smtplib, itchat	           邮件 + 微信
+GUI	        Tkinter + Matplotlib	        监控面板
 🚀 快速开始
 1. 环境准备
 bash
